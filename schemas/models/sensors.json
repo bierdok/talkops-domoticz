@@ -1,0 +1,34 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "The sensor name"
+      },
+      "description": {
+        "type": "string",
+        "description": "The sensor description"
+      },
+      "type": {
+        "type": "string",
+        "enum": ["temperature", "humidity", "pressure", "air_quality"],
+        "description": "The sensor type"
+      },
+      "value": {
+        "type": "string",
+        "description": "The sensor value"
+      },
+      "unit": {
+        "type": "string",
+        "description": "The sensor unit"
+      },
+      "room_id": {
+        "type": "integer",
+        "description": "The related room identifier"
+      }
+    },
+    "required": ["name", "type", "value", "unit"]
+  }
+}

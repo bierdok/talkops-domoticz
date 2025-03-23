@@ -1,0 +1,30 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer",
+        "description": "The light unique identifier"
+      },
+      "name": {
+        "type": "string",
+        "description": "The light name"
+      },
+      "description": {
+        "type": "string",
+        "description": "The light description"
+      },
+      "state": {
+        "type": "string",
+        "enum": ["on", "off"],
+        "description": "The light state"
+      },
+      "room_id": {
+        "type": "integer",
+        "description": "The related room identifier"
+      }
+    },
+    "required": ["id", "name", "state"]
+  }
+}

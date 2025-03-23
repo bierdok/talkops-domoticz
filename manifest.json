@@ -1,0 +1,28 @@
+{
+  "categories": [
+    "Home Automation"
+  ],
+  "dockerRepository": "bierdok/talkops-domoticz",
+  "features": [
+    "Lights: Check status, turn on/off",
+    "Shutters: Check status, open, close and stop",
+    "Scene: Check status, enable, disable and toggle",
+    "Sensors: Check status"
+  ],
+  "icon": "https://play-lh.googleusercontent.com/R9wJDHfZh-29Mlgiqn6MIlc21gUMI0gQXWfTlzru8lLpls0xUa3vSEGCeMjNE3MH6l8=s48-rw",
+  "installationSteps": [
+    "Make sure your Domoticz version is newer than `2023.2`",
+    "Open Domoticz from a web browser with admin permissions.",
+    "Enable the API: `Setup → Settings → Security`",
+    "Create a new user specifically for the TalkOps integration: `Setup → Users`",
+    "Grant this user access to the devices you want to control by voice: `Set Devices`",
+    "Set the environment variables using the credentials of the newly created user."
+  ],
+  "name": "Domoticz",
+  "sdk": {
+    "name": "nodejs",
+    "version": "2.3.4"
+  },
+  "version": "1.0.0",
+  "website": "https://www.domoticz.com/"
+}

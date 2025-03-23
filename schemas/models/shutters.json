@@ -1,0 +1,30 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer",
+        "description": "The shutter unique identifier"
+      },
+      "name": {
+        "type": "string",
+        "description": "The shutter name"
+      },
+      "description": {
+        "type": "string",
+        "description": "The shutter description"
+      },
+      "state": {
+        "type": "string",
+        "enum": ["opened", "unknown", "closed"],
+        "description": "The shutter current state"
+      },
+      "room_id": {
+        "type": "integer",
+        "description": "The related room identifier"
+      }
+    },
+    "required": ["id", "name", "state"]
+  }
+}
