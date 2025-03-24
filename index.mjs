@@ -16,7 +16,7 @@ const password = new Parameter('PASSWORD')
 const extension = new Extension()
   .setName('Domoticz')
   .setWebsite('https://www.domoticz.com/')
-  .setCategories(['Home Automation'])
+  .setCategory('Home Automation')
   .setIcon(
     'https://play-lh.googleusercontent.com/R9wJDHfZh-29Mlgiqn6MIlc21gUMI0gQXWfTlzru8lLpls0xUa3vSEGCeMjNE3MH6l8=s48-rw',
   )
