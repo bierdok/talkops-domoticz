@@ -1,5 +1,4 @@
 import { Extension, Parameter } from 'talkops'
-import pkg from './package.json' with { type: 'json' }
 
 const baseUrl = new Parameter('BASE_URL')
   .setDescription('The base URL of your Domoticz server.')
@@ -20,8 +19,6 @@ const extension = new Extension()
   .setIcon(
     'https://play-lh.googleusercontent.com/R9wJDHfZh-29Mlgiqn6MIlc21gUMI0gQXWfTlzru8lLpls0xUa3vSEGCeMjNE3MH6l8=s48-rw',
   )
-  .setVersion(pkg.version)
-  .setDockerRepository('bierdok/talkops-domoticz')
   .setFeatures([
     'Lights: Check status, turn on/off',
     'Shutters: Check status, open, close and stop',

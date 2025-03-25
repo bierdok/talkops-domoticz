@@ -1,5 +1,4 @@
 # TalkOps Extension: Domoticz
-![Docker Pulls](https://img.shields.io/docker/pulls/bierdok/talkops-domoticz)
 
 A TalkOps Extension made to work with [TalkOps](https://talkops.app).
 

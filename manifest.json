@@ -1,6 +1,5 @@
 {
   "category": "Home Automation",
-  "dockerRepository": "bierdok/talkops-domoticz",
   "features": [
     "Lights: Check status, turn on/off",
     "Shutters: Check status, open, close and stop",
@@ -19,8 +18,7 @@
   "name": "Domoticz",
   "sdk": {
     "name": "nodejs",
-    "version": "2.4.0"
+    "version": "2.5.0"
   },
-  "version": "1.0.0",
   "website": "https://www.domoticz.com/"
 }
