@@ -3,6 +3,7 @@ import { Extension, Parameter } from 'talkops'
 const baseUrl = new Parameter('BASE_URL')
   .setDescription('The base URL of your Domoticz server.')
   .setPossibleValues(['http://domoticz:8080', 'https://domoticz.mydomain.net'])
+  .setType('url')
 
 const username = new Parameter('USERNAME')
   .setDescription('The username for authenticating with the Domoticz API.')
@@ -11,6 +12,7 @@ const username = new Parameter('USERNAME')
 const password = new Parameter('PASSWORD')
   .setDescription('The password related to username.')
   .setDefaultValue('domoticz')
+  .setType('password')
 
 const extension = new Extension()
   .setName('Domoticz')
@@ -69,7 +71,9 @@ async function request(param) {
   return response.data
 }
 
+let timeout = null
 async function refresh() {
+  timeout && clearTimeout(timeout)
   extension.errors = []
   let floors = []
   let rooms = []
@@ -231,9 +235,8 @@ async function refresh() {
     extension.addError(err.message)
   }
 
-  setTimeout(refresh, 5000)
+  timeout = setTimeout(refresh, 5000)
 }
-refresh()
 
 extension.setFunctions([
   async function update_lights(action, ids) {
@@ -276,3 +279,5 @@ extension.setFunctions([
     }
   },
 ])
+
+extension.setBootstrap(refresh)
