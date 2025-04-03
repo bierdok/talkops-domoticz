@@ -74,7 +74,6 @@ async function request(param) {
 let timeout = null
 async function refresh() {
   timeout && clearTimeout(timeout)
-  extension.errors = []
   let floors = []
   let rooms = []
   let lights = []
@@ -231,8 +230,7 @@ async function refresh() {
     }
     extension.setFunctionSchemas(functionSchemas)
   } catch (err) {
-    extension.clearErrors()
-    extension.addError(err.message)
+    console.error(err.message)
   }
 
   timeout = setTimeout(refresh, 5000)
