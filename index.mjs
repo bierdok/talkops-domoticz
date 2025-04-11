@@ -19,7 +19,7 @@ const extension = new Extension()
   .setWebsite('https://www.domoticz.com/')
   .setCategory('home_automation')
   .setIcon(
-    'https://play-lh.googleusercontent.com/R9wJDHfZh-29Mlgiqn6MIlc21gUMI0gQXWfTlzru8lLpls0xUa3vSEGCeMjNE3MH6l8=s48-rw',
+    'https://play-lh.googleusercontent.com/R9wJDHfZh-29Mlgiqn6MIlc21gUMI0gQXWfTlzru8lLpls0xUa3vSEGCeMjNE3MH6l8',
   )
   .setFeatures([
     'Lights: Check status, turn on/off',
