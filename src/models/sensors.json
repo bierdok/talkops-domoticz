@@ -28,7 +28,6 @@
         "type": "integer",
         "description": "The related room identifier"
       }
-    },
-    "required": ["name", "type", "value", "unit"]
+    }
   }
 }

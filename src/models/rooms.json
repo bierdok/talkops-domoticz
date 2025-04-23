@@ -15,7 +15,6 @@
         "type": "integer",
         "description": "The related floor identifier"
       }
-    },
-    "required": ["id", "name"]
+    }
   }
 }
