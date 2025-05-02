@@ -278,4 +278,4 @@ extension.setFunctions([
   },
 ])
 
-extension.setBootstrap(refresh)
+extension.on('boot', refresh)
