@@ -36,6 +36,7 @@ const extension = new Extension()
     'Set the environment variables using the credentials of the newly created user.',
   ])
   .setParameters([baseUrl, username, password])
+  .start()
 
 import axios from 'axios'
 import yaml from 'js-yaml'
