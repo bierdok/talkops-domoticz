@@ -41,16 +41,16 @@ const extension = new Extension()
 import axios from 'axios'
 import yaml from 'js-yaml'
 
-import floorsModel from './src/models/floors.json' with { type: 'json' }
-import roomsModel from './src/models/rooms.json' with { type: 'json' }
-import lightsModel from './src/models/lights.json' with { type: 'json' }
-import shuttersModel from './src/models/shutters.json' with { type: 'json' }
-import sensorsModel from './src/models/sensors.json' with { type: 'json' }
-import scenesModel from './src/models/scenes.json' with { type: 'json' }
+import floorsModel from './models/floors.json' with { type: 'json' }
+import roomsModel from './models/rooms.json' with { type: 'json' }
+import lightsModel from './models/lights.json' with { type: 'json' }
+import shuttersModel from './models/shutters.json' with { type: 'json' }
+import sensorsModel from './models/sensors.json' with { type: 'json' }
+import scenesModel from './models/scenes.json' with { type: 'json' }
 
-import updateLightsFunction from './src/functions/update_lights.json' with { type: 'json' }
-import updateScenesFunction from './src/functions/update_scenes.json' with { type: 'json' }
-import updateShuttersFunction from './src/functions/update_shutters.json' with { type: 'json' }
+import updateLightsFunction from './functions/update_lights.json' with { type: 'json' }
+import updateScenesFunction from './functions/update_scenes.json' with { type: 'json' }
+import updateShuttersFunction from './functions/update_shutters.json' with { type: 'json' }
 
 const baseInstructions = `
 You are a home automation assistant, focused solely on managing connected devices in the home.

@@ -11,8 +11,8 @@
   "name": "Domoticz",
   "sdk": {
     "name": "nodejs",
-    "version": "2.15.1"
+    "version": "2.15.3"
   },
-  "softwareVersion": "2024.7",
+  "softwareVersion": null,
   "website": "https://www.domoticz.com/"
 }
