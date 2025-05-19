@@ -234,7 +234,7 @@ async function refresh() {
     console.error(err.message)
   }
 
-  timeout = setTimeout(refresh, 5000)
+  timeout = setTimeout(refresh, 60000)
 }
 
 extension.setFunctions([
