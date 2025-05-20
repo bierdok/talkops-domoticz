@@ -123,8 +123,6 @@ async function updateMemory() {
     let shutters = []
     let sensors = []
     let scenes = []
-    const v = await request('getversion')
-    extension.setSoftwareVersion(v.version)
     const p = await request('getsettings')
     const fps = await request('getfloorplans')
     if (fps.result) {
@@ -266,6 +264,7 @@ async function updateMemory() {
     }
     extension.setFunctionSchemas(functionSchemas)
   } catch (err) {
+    if (!extension.isEnabled()) return
     console.error(err.message)
   }
   updateMemoryTimeout = setTimeout(updateMemory, 60000)
