@@ -36,6 +36,47 @@ const extension = new Extension()
     'Set the environment variables using the credentials of the newly created user.',
   ])
   .setParameters([baseUrl, username, password])
+  .setFunctions([
+    async function update_lights(action, ids) {
+      try {
+        for (const id of ids) {
+          const response = await request(`switchlight&idx=${id}&switchcmd=${action}`)
+          if (response.status === 'ERR') {
+            throw { message: 'bad_request' }
+          }
+        }
+        return 'Done.'
+      } catch (e) {
+        return `Error: ${e.message}`
+      }
+    },
+    async function update_shutters(action, ids) {
+      try {
+        for (const id of ids) {
+          const response = await request(`switchlight&idx=${id}&switchcmd=${action}`)
+          if (response.status === 'ERR') {
+            throw { message: 'bad_request' }
+          }
+        }
+        return `${action}ing.`
+      } catch (e) {
+        return `Error: ${e.message}`
+      }
+    },
+    async function update_scenes(action, ids) {
+      try {
+        for (const id of ids) {
+          const response = await request(`switchscene&idx=${id}&switchcmd=${action}`)
+          if (response.status === 'ERR') {
+            throw { message: 'bad_request' }
+          }
+        }
+        return 'Done.'
+      } catch (e) {
+        return `Error: ${e.message}`
+      }
+    },
+  ])
   .start()
 
 import axios from 'axios'
@@ -72,22 +113,19 @@ async function request(param) {
   return response.data
 }
 
-let timeout = null
-async function refresh() {
-  timeout && clearTimeout(timeout)
-  let floors = []
-  let rooms = []
-  let lights = []
-  let shutters = []
-  let sensors = []
-  let scenes = []
-
+let updateMemoryTimeout = null
+async function updateMemory() {
+  updateMemoryTimeout && clearTimeout(updateMemoryTimeout)
   try {
+    let floors = []
+    let rooms = []
+    let lights = []
+    let shutters = []
+    let sensors = []
+    let scenes = []
     const v = await request('getversion')
     extension.setSoftwareVersion(v.version)
-
     const p = await request('getsettings')
-
     const fps = await request('getfloorplans')
     if (fps.result) {
       for (const fp of fps.result) {
@@ -192,9 +230,7 @@ async function refresh() {
         })
       }
     }
-
     const instructions = [baseInstructions]
-
     if (!lights.length && !shutters.length && !sensors.length && !scenes.length) {
       instructions.push(defaultInstructions)
     } else {
@@ -218,7 +254,6 @@ async function refresh() {
       instructions.push('```')
     }
     extension.setInstructions(instructions.join('\n'))
-
     const functionSchemas = []
     if (lights) {
       functionSchemas.push(updateLightsFunction)
@@ -233,50 +268,7 @@ async function refresh() {
   } catch (err) {
     console.error(err.message)
   }
-
-  timeout = setTimeout(refresh, 60000)
+  updateMemoryTimeout = setTimeout(updateMemory, 60000)
 }
 
-extension.setFunctions([
-  async function update_lights(action, ids) {
-    try {
-      for (const id of ids) {
-        const response = await request(`switchlight&idx=${id}&switchcmd=${action}`)
-        if (response.status === 'ERR') {
-          throw { message: 'bad_request' }
-        }
-      }
-      return 'Done.'
-    } catch (e) {
-      return `Error: ${e.message}`
-    }
-  },
-  async function update_shutters(action, ids) {
-    try {
-      for (const id of ids) {
-        const response = await request(`switchlight&idx=${id}&switchcmd=${action}`)
-        if (response.status === 'ERR') {
-          throw { message: 'bad_request' }
-        }
-      }
-      return `${action}ing.`
-    } catch (e) {
-      return `Error: ${e.message}`
-    }
-  },
-  async function update_scenes(action, ids) {
-    try {
-      for (const id of ids) {
-        const response = await request(`switchscene&idx=${id}&switchcmd=${action}`)
-        if (response.status === 'ERR') {
-          throw { message: 'bad_request' }
-        }
-      }
-      return 'Done.'
-    } catch (e) {
-      return `Error: ${e.message}`
-    }
-  },
-])
-
-extension.on('boot', refresh)
+extension.on('boot', updateMemory)
